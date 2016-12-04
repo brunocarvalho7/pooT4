@@ -1,0 +1,11 @@
+Adicionar no eclipse:
+
+Help > Install New Software
+
+Add:
+
+Name: e(fx)clipse
+Location: http://download.eclipse.org/efxclipse/updates-released/2.0.0/site
+
+
+Instalador JavaFX Scene Builder: http://gluonhq.com/labs/scene-builder/
