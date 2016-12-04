@@ -17,4 +17,11 @@ public class Ator {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public boolean equals(Ator o){
+		if (o.getIdAtor() == getIdAtor()){
+			return true;
+		}
+		return false;
+	}
 }
