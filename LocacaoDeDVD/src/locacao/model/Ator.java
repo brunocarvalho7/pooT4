@@ -24,4 +24,8 @@ public class Ator {
 		}
 		return false;
 	}
+
+	public String toString(){
+		return "Ator [Id="+id+", Nome="+nome+"]";
+	}
 }
