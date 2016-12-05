@@ -12,7 +12,7 @@ public class Ator {
 		this.idAtor = idAtor;
 	}
 	public String getNome() {
-		return nome;
+		return nome+"teste";
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -25,7 +25,8 @@ public class Ator {
 		return false;
 	}
 
-	public String toString(){
-		return "Ator [Id="+id+", Nome="+nome+"]";
+	public String toString() {
+		return "Ator [idAtor=" + idAtor + ", nome=" + nome + "]";
 	}
+	
 }
