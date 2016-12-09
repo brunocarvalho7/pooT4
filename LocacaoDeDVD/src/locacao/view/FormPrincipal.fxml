@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locacao.controls.ControllerPrincipal">
    <top>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
@@ -14,19 +13,22 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Cadastros">
                   <items>
-                    <MenuItem id="itemCliente" mnemonicParsing="false" onAction="#telaCliente" text="Clientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#telaAtor" text="Ator" />
+                        <MenuItem mnemonicParsing="false" text="Atendentes" />
+                    <MenuItem id="itemCliente" mnemonicParsing="false" onAction="#telaCliente" text="Cliente" />
+                        <MenuItem mnemonicParsing="false" text="DVD" />
+                        <MenuItem mnemonicParsing="false" onAction="#telaGenero" text="Genero" />
+                        <MenuItem mnemonicParsing="false" text="Gravadora" />
+                        <MenuItem mnemonicParsing="false" text="Produtor" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Aluguel">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" text="Novo Aluguel" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
+                <Menu mnemonicParsing="false" text="Sobre" />
+                  <Menu mnemonicParsing="false" text="Sair" />
               </menus>
             </MenuBar>
          </children>
