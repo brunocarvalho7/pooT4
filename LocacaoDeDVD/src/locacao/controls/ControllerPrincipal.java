@@ -42,4 +42,30 @@ public class ControllerPrincipal {
 		outraTela.show();
 	}
 	
+	public void telaProdutor() throws Exception{
+		Stage outraTela = new Stage();
+		
+		Parent formProdutor = FXMLLoader.load(getClass().getResource("../view/FormProdutor.fxml"));
+		
+		outraTela.setTitle("Cadastro de produtor");
+		
+		Scene tela = new Scene(formProdutor, 530, 200);
+		
+		outraTela.setScene(tela);
+		outraTela.show();
+	}
+	
+	public void telaGravadora() throws Exception{
+		Stage outraTela = new Stage();
+		
+		Parent formGravadora = FXMLLoader.load(getClass().getResource("../view/FormGravadora.fxml"));
+		
+		outraTela.setTitle("Cadastro de gravadora");
+		
+		Scene tela = new Scene(formGravadora, 530, 200);
+		
+		outraTela.setScene(tela);
+		outraTela.show();
+	}
+	
 }
