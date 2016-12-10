@@ -1,6 +1,8 @@
 package locacao.aplicacao;
 
-import locacao.model.Ator;
+import java.util.ArrayList;
+import java.util.List;
+import locacao.model.Gravadora;
 
 public class GGravadora {
 	
@@ -16,7 +18,7 @@ public class GGravadora {
 		GGravadora.ultimoID = ultimoID;
 	}
 
-	public static List<Gravadora> getAtores() {
+	public static List<Gravadora> getGravadoras() {
 		return gravadoras;
 	}
 	

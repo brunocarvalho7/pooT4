@@ -1,6 +1,8 @@
 package locacao.aplicacao;
 
-import locacao.model.Genero;
+import java.util.ArrayList;
+import java.util.List;
+import locacao.model.Produtor;
 
 public class GProdutor {
 static int ultimoID = 0;

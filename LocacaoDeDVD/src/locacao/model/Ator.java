@@ -45,10 +45,6 @@ public class Ator {
 			return false;
 		return true;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> eb8c6af37cbb6b76ec46d9c46ba0f3d4dc1477d5
 	public String toString() {
 		return "Ator [idAtor=" + idAtor + ", nome=" + nome + "]";
 	}

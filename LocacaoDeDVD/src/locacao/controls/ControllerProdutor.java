@@ -1,5 +1,13 @@
 package locacao.controls;
 
+import java.util.Optional;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextArea;
 import locacao.aplicacao.GProdutor;
 import locacao.model.Produtor;
 
@@ -76,7 +84,7 @@ public class ControllerProdutor {
 				GProdutor.getProdutores().set(GProdutor.getIndex(vID) , produtor);
 				//GAtor.getAtores().set(GAtor.getIndex(vID) , ator);
 			}else{
-				GProdutores.getProdutores().add(produtor);
+				GProdutor.getProdutores().add(produtor);
 				GProdutor.setUltimoID(GProdutor.getUltimoID() + 1);
 			}
 			nextProdutor();
