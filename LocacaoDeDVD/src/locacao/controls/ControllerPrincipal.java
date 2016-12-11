@@ -12,7 +12,7 @@ public class ControllerPrincipal {
 		Parent formCliente = FXMLLoader.load(getClass().getResource("../view/FormCliente.fxml"));
 		
 		outraTela.setTitle("tela de cliente");
-		outraTela.setScene(new Scene(formCliente, 500, 400));
+		outraTela.setScene(new Scene(formCliente, 530, 550));
 		outraTela.show();
 	}
 	

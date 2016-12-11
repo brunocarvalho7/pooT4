@@ -1,14 +1,20 @@
 package locacao.controls;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import locacao.aplicacao.GCliente;
+import locacao.model.Aluguel;
 import locacao.model.Cliente;
 
 public class ControllerCliente {
@@ -20,8 +26,22 @@ public class ControllerCliente {
   Button previous, next, novo, editar, salvar, remover;
   
   @FXML
+  TableView<Aluguel> historico;
+  
+  @FXML
+  TableColumn<Aluguel, String> tcData, tcDevolucao, tcTotal, tcSituacao, tcAtendente;
+ 
+  
+  @FXML
   public void initialize(){   
     System.out.println(GCliente.getClientes());
+
+    tcData.setCellValueFactory(cellData -> cellData.getValue().dataProperty().asString());
+    tcDevolucao.setCellValueFactory(cellData -> cellData.getValue().dataDevolucaoProperty().asString());
+    tcTotal.setCellValueFactory(cellData -> cellData.getValue().rsTotalProperty().asString());
+    tcSituacao.setCellValueFactory(cellData -> cellData.getValue().situacaoProperty());
+    tcAtendente.setCellValueFactory(cellData -> cellData.getValue().atendenteProperty().asString());    
+    
     
     if(GCliente.getClientes().isEmpty()){ //OK
       previous.setDisable(true);
@@ -107,7 +127,11 @@ public class ControllerCliente {
         endereco.requestFocus();
      }
     else{
-      Cliente cliente = new Cliente(vID, vNome, vCPF, vEnd, vTel, vEmail);
+      ObservableList<Aluguel> lista = FXCollections.observableArrayList();
+      lista.add(new Aluguel(1, LocalDate.of(2016, 12, 11), LocalDate.of(2016, 12, 30),
+    		  Integer.parseInt(id.getText()), 2, null, 1, 12.0, "Aberto"));
+      
+      Cliente cliente = new Cliente(vID, vNome, vCPF, vEnd, vTel, vEmail, lista);
       
       if(GCliente.getClientes().contains(cliente)){
         GCliente.getClientes().set(GCliente.getIndex(vID) , cliente);
@@ -203,6 +227,10 @@ public class ControllerCliente {
     endereco.setText(a.getEndereco());
     telefone.setText(a.getTelefone());
     email.setText(a.getEmail());
+    
+    
+    
+    historico.setItems(GCliente.getClientes().get(indice).getHistorico());
   }
   
 }

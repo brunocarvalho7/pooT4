@@ -7,15 +7,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.HBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="530.0" vgap="3.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locacao.controls.ControllerCliente">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="550.0" minWidth="-Infinity" prefHeight="600.0" prefWidth="530.0" vgap="3.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locacao.controls.ControllerCliente">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="142.0" minHeight="0.0" prefHeight="93.0" vgrow="SOMETIMES" />
-    <RowConstraints fillHeight="false" maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="NEVER" />
-    <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="146.0" minHeight="0.0" percentHeight="10.0" prefHeight="143.0" vgrow="SOMETIMES" />
+    <RowConstraints fillHeight="false" maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="NEVER" />
+    <RowConstraints maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="35.0" minHeight="35.0" percentHeight="7.0" prefHeight="35.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -24,12 +31,12 @@
       <RowConstraints maxHeight="50.0" minHeight="0.0" prefHeight="50.0" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="600.0" text="Cadastro de Clientes" GridPane.columnSpan="2">
+      <Label alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" prefHeight="500.0" prefWidth="600.0" text="Cadastro de Clientes" GridPane.columnSpan="2">
          <font>
             <Font name="AngsanaUPC Bold Italic" size="30.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="353.0" text="ID Cliente:" GridPane.rowIndex="1">
+      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="289.0" text="ID Cliente:" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="10.0" />
          </GridPane.margin>
@@ -49,7 +56,7 @@
             <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
          </GridPane.margin>
       </TextArea>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+      <HBox fillHeight="false" prefHeight="200.0" prefWidth="526.0" GridPane.columnSpan="2" GridPane.rowIndex="15">
          <children>
             <Button fx:id="previous" mnemonicParsing="false" onAction="#previousCliente" text="&lt;">
                <HBox.margin>
@@ -126,6 +133,20 @@
             <Insets bottom="2.0" left="10.0" right="10.0" top="2.0" />
          </GridPane.margin>
       </TextArea>
+      <TableView fx:id="historico" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="7">
+        <columns>
+          <TableColumn fx:id="tcData" prefWidth="91.0" text="Data" />
+          <TableColumn fx:id="tcDevolucao" prefWidth="107.0" text="Data Devolução" />
+            <TableColumn fx:id="tcAtendente" prefWidth="120.0" text="Atendente" />
+            <TableColumn fx:id="tcTotal" text="R$ Total" />
+            <TableColumn fx:id="tcSituacao" prefWidth="127.0" text="Situação" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="527.0" text="Histórico de Aluguéis" underline="true" GridPane.columnSpan="2" GridPane.rowIndex="7">
+         <font>
+            <Font name="Arial Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="1.0" />
