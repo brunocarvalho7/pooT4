@@ -20,8 +20,6 @@ public class ControllerProdutor {
 
 	@FXML
 	public void initialize(){
-		System.out.println(GProdutor.getProdutores());
-
 		if(GProdutor.getProdutores().isEmpty()){ //OK
 			previous.setDisable(true);
 			next.setDisable(true);
@@ -67,7 +65,6 @@ public class ControllerProdutor {
 	}
 
 	public boolean salvarProdutor(){
-		//TODO RESTRI��ES
 		int vID = Integer.parseInt(id.getText());
 		String vNome = descricao.getText();
 
@@ -106,8 +103,6 @@ public class ControllerProdutor {
 
 	public void previousProdutor(){ //OK
 		int indiceAnterior = (GProdutor.getIndex(Integer.parseInt(id.getText())) - 1);
-		System.out.println(GProdutor.getProdutores());
-			System.out.println("Indice Anterior: "+indiceAnterior );
 			if(indiceAnterior >= 0){
 			  carregarInformacoes(indiceAnterior);
 			}
@@ -148,7 +143,6 @@ public class ControllerProdutor {
 				Alert a = new Alert(AlertType.INFORMATION, "Registro removido com sucesso!!", ButtonType.CLOSE);
 				a.show();
 
-				System.out.println(GProdutor.getProdutores());
 				if(GProdutor.getProdutores().size() == 0){
 					id.setText("");
 					descricao.setText("");

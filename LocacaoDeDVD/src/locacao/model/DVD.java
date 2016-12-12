@@ -95,17 +95,31 @@ public class DVD {
 
 	@Override
 	public String toString() {
-		return "DVD [idDvd=" + idDvd + ", genero=" + genero + ", titulo=" + titulo + ", atores=" + atores
-				+ ", produtores=" + produtores + ", gravadora=" + gravadora + ", quantEstoque=" + quantEstoque
-				+ ", rsAluguel=" + rsAluguel + "]";
+		return titulo;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idDvd;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DVD other = (DVD) obj;
+		if (idDvd != other.idDvd)
+			return false;
+		return true;
 	}
 	
-	public boolean equals(DVD o){
-		if(o.getIdDvd() == getIdDvd()){
-			return true;
-		}
-		
-		return false;
-	}
+	
 	
 }

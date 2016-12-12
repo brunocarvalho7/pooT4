@@ -9,6 +9,7 @@ public class Atendente extends Pessoa{
 
 	public Atendente(int idPessoa, String nome, String cpf, String endereco, String telefone, String email, float salario) {
 		super(idPessoa, nome, cpf, endereco, telefone, email);
+		this.salario = salario;
 	}
 	
 	

@@ -9,6 +9,10 @@ public abstract class Pessoa {
 	private String telefone;
 	private String email;
 	
+	public Pessoa(){
+		this(0,"","","","","");
+	}
+	
 	public Pessoa(int idPessoa, String nome, String cpf, String endereco, String telefone, String email) {
 		super();
 		this.idPessoa = idPessoa;
@@ -68,17 +72,32 @@ public abstract class Pessoa {
 	}
 
 	public String toString() {
-		return "Pessoa [idPessoa=" + idPessoa + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco
-				+ ", telefone=" + telefone + ", email=" + email + "]";
+		return nome;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idPessoa;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (idPessoa != other.idPessoa)
+			return false;
+		return true;
 	}
 	
-	public boolean equals(Pessoa p){
-		if(p.getCpf().equals(getCpf())){
-			return true;
-		}
-		
-		return false;
-	}
+
 	
 	
 }

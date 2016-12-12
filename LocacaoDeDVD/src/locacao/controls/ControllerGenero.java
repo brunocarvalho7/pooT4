@@ -20,8 +20,6 @@ public class ControllerGenero {
 	
 	@FXML
 	public void initialize(){		
-		System.out.println(GGenero.getGeneros());
-		
 		if(GGenero.getGeneros().isEmpty()){ //OK
 			previous.setDisable(true);
 			next.setDisable(true);
@@ -106,19 +104,17 @@ public class ControllerGenero {
 	
 	public void previousGenero(){ //OK
 		int indiceAnterior = (GGenero.getIndex(Integer.parseInt(id.getText())) - 1);  
-		System.out.println(GGenero.getGeneros());
-			System.out.println("Indice Anterior: "+indiceAnterior );
-			if(indiceAnterior >= 0){
-			  carregarInformacoes(indiceAnterior);
-			}
-		
-			if(indiceAnterior == 0){
-			  previous.setDisable(true);
-			}else{
-			  previous.setDisable(false);
-			}
-			next.setDisable(false);			
-	}
+		if(indiceAnterior >= 0){
+		  carregarInformacoes(indiceAnterior);
+		}
+	
+		if(indiceAnterior == 0){
+		  previous.setDisable(true);
+		}else{
+		  previous.setDisable(false);
+		}
+		next.setDisable(false);			
+}
 	
 	
 	public void nextGenero(){
@@ -148,7 +144,6 @@ public class ControllerGenero {
 				Alert a = new Alert(AlertType.INFORMATION, "Registro removido com sucesso!!", ButtonType.CLOSE);
 				a.show();
 				
-				System.out.println(GGenero.getGeneros());
 				if(GGenero.getGeneros().size() == 0){
 					id.setText("");
 					descricao.setText("");

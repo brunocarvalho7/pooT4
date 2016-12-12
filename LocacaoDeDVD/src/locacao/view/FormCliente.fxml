@@ -137,7 +137,7 @@
         <columns>
           <TableColumn fx:id="tcData" prefWidth="91.0" text="Data" />
           <TableColumn fx:id="tcDevolucao" prefWidth="107.0" text="Data Devolução" />
-            <TableColumn fx:id="tcAtendente" prefWidth="120.0" text="Atendente" />
+            <TableColumn fx:id="tcQuant" prefWidth="120.0" text="Quant. Itens" />
             <TableColumn fx:id="tcTotal" text="R$ Total" />
             <TableColumn fx:id="tcSituacao" prefWidth="127.0" text="Situação" />
         </columns>

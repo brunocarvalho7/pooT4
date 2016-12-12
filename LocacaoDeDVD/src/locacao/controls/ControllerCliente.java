@@ -1,6 +1,5 @@
 package locacao.controls;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import javafx.collections.FXCollections;
@@ -29,18 +28,16 @@ public class ControllerCliente {
   TableView<Aluguel> historico;
   
   @FXML
-  TableColumn<Aluguel, String> tcData, tcDevolucao, tcTotal, tcSituacao, tcAtendente;
+  TableColumn<Aluguel, String> tcData, tcDevolucao, tcTotal, tcSituacao, tcQuant;
  
   
   @FXML
   public void initialize(){   
-    System.out.println(GCliente.getClientes());
-
     tcData.setCellValueFactory(cellData -> cellData.getValue().dataProperty().asString());
     tcDevolucao.setCellValueFactory(cellData -> cellData.getValue().dataDevolucaoProperty().asString());
     tcTotal.setCellValueFactory(cellData -> cellData.getValue().rsTotalProperty().asString());
     tcSituacao.setCellValueFactory(cellData -> cellData.getValue().situacaoProperty());
-    tcAtendente.setCellValueFactory(cellData -> cellData.getValue().atendenteProperty().asString());    
+    tcQuant.setCellValueFactory(cellData -> cellData.getValue().quantItensProperty().asString());    
     
     
     if(GCliente.getClientes().isEmpty()){ //OK
@@ -75,6 +72,7 @@ public class ControllerCliente {
     telefone.setText("");
     email.setText("");
     descricao.requestFocus();
+    historico.setItems(null);
     
     previous.setDisable(true);
     next.setDisable(true);
@@ -101,57 +99,38 @@ public class ControllerCliente {
     remover.setDisable(true);   
   }
   
-  public boolean salvarCliente(){
-    //TODO RESTRIÇÕES 
-    int vID = Integer.parseInt(id.getText());
-    String vNome  = descricao.getText();
-    String vCPF   = cpf.getText();
-    String vEnd   = endereco.getText();
-    String vTel   = telefone.getText();
-    String vEmail = email.getText();
-    
-    if(vNome.trim().isEmpty()){
-      Alert vazio = new Alert(AlertType.WARNING, "Preencha o nome do cliente", ButtonType.OK);
-      vazio.show();
-      descricao.setText("");
-      descricao.requestFocus();
-    }else if(vCPF.trim().isEmpty()){
-          Alert vazio = new Alert(AlertType.WARNING, "Preencha o CPF do cliente", ButtonType.OK);
-          vazio.show();
-          cpf.setText("");
-          cpf.requestFocus();
-     }else if(vEnd.trim().isEmpty()){
-        Alert vazio = new Alert(AlertType.WARNING, "Preencha o Endereço do cliente", ButtonType.OK);
-        vazio.show();
-        endereco.setText("");
-        endereco.requestFocus();
-     }
-    else{
-      ObservableList<Aluguel> lista = FXCollections.observableArrayList();
-      lista.add(new Aluguel(1, LocalDate.of(2016, 12, 11), LocalDate.of(2016, 12, 30),
-    		  Integer.parseInt(id.getText()), 2, null, 1, 12.0, "Aberto"));
+  public boolean salvarCliente(){   
+    if(isValid()){
+	    int vID = Integer.parseInt(id.getText());
+	    String vNome  = descricao.getText();
+	    String vCPF   = cpf.getText();
+	    String vEnd   = endereco.getText();
+	    String vTel   = telefone.getText();
+	    String vEmail = email.getText();
+	    ObservableList<Aluguel> lista = FXCollections.observableArrayList();
       
-      Cliente cliente = new Cliente(vID, vNome, vCPF, vEnd, vTel, vEmail, lista);
+	    Cliente cliente = new Cliente(vID, vNome, vCPF, vEnd, vTel, vEmail, lista);
       
-      if(GCliente.getClientes().contains(cliente)){
-        GCliente.getClientes().set(GCliente.getIndex(vID) , cliente);
-      }else{
-        GCliente.getClientes().add(cliente);
-        GCliente.setUltimoID(GCliente.getUltimoID() + 1);
-      }
-      nextCliente();
+        if(GCliente.getClientes().contains(cliente)){
+          GCliente.getClientes().set(GCliente.getIndex(vID) , cliente);
+        }else{
+          GCliente.getClientes().add(cliente);
+          GCliente.setUltimoID(GCliente.getUltimoID() + 1);
+        }
+        
+        nextCliente();
       
-      novo.setDisable(false);
-      editar.setDisable(false);
-      salvar.setDisable(true);
-      remover.setDisable(false);
-      descricao.setEditable(false);
-      
-      
-      Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
-      a.show();
-  
-      return true;
+	    novo.setDisable(false);
+	    editar.setDisable(false);
+	    salvar.setDisable(true);
+	    remover.setDisable(false);
+ 	    descricao.setEditable(false);
+	  
+	  
+	    Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
+	    a.show();
+	  
+	    return true;
     }
     return false;
   }
@@ -205,6 +184,7 @@ public class ControllerCliente {
           endereco.setText("");
           telefone.setText("");
           email.setText("");
+          historico.setItems(null);
          
           previous.setDisable(true);
           next.setDisable(true);
@@ -228,9 +208,50 @@ public class ControllerCliente {
     telefone.setText(a.getTelefone());
     email.setText(a.getEmail());
     
-    
-    
     historico.setItems(GCliente.getClientes().get(indice).getHistorico());
+  }
+  
+  public boolean isValid(){
+	  if((descricao.getText() == null) || (descricao.getText().isEmpty())){
+	      Alert vazio = new Alert(AlertType.WARNING, "Preencha o nome do cliente", ButtonType.OK);
+	      vazio.show();
+	      descricao.setText("");
+	      descricao.requestFocus();
+	      return false;
+	    }
+	  if((cpf.getText() == null) || (cpf.getText().isEmpty())){
+          Alert vazio = new Alert(AlertType.WARNING, "Preencha o CPF do cliente", ButtonType.OK);
+          vazio.show();
+          cpf.setText("");
+          cpf.requestFocus();
+          return false;
+	  }
+		    
+	  if((cpf.getText().matches("\\d+") == false) || (cpf.getText() == "") || (cpf.getText().length()<11)){
+		  Alert vazio = new Alert(AlertType.WARNING, "Preencha um CPF válido!", ButtonType.OK);
+    	  vazio.show();
+    	  cpf.setText("");
+    	  cpf.requestFocus();
+		  return false;
+		}
+	  
+	  if(endereco.getText() == null){
+        Alert vazio = new Alert(AlertType.WARNING, "Preencha o Endereço do cliente", ButtonType.OK);
+        vazio.show();
+        endereco.setText("");
+        endereco.requestFocus();
+        return false;
+	   }
+	  
+	  if((telefone.getText().matches("\\d+") == false) || (telefone.getText() == "")){
+		  Alert vazio = new Alert(AlertType.WARNING, "Preencha um telefone válido!!", ButtonType.OK);
+	      vazio.show();
+	      telefone.setText("");
+	      telefone.requestFocus();
+		  return false;
+		}
+		
+	  return true;
   }
   
 }

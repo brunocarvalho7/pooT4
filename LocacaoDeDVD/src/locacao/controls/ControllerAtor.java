@@ -20,10 +20,8 @@ public class ControllerAtor {
 	Button previous, next, novo, editar, salvar, remover;
 	
 	@FXML
-	public void initialize(){		
-		System.out.println(GAtor.getAtores());
-		
-		if(GAtor.getAtores().isEmpty()){ //OK
+	public void initialize(){				
+		if(GAtor.getAtores().isEmpty()){ 
 			previous.setDisable(true);
 			next.setDisable(true);
 			editar.setDisable(true);
@@ -107,18 +105,16 @@ public class ControllerAtor {
 	
 	public void previousAtor(){ 
 		int indiceAnterior = (GAtor.getIndex(Integer.parseInt(id.getText())) - 1);  
-		System.out.println(GAtor.getAtores());
-			System.out.println("Indice Anterior: "+indiceAnterior );
-			if(indiceAnterior >= 0){
-			  carregarInformacoes(indiceAnterior);
-			}
-		
-			if(indiceAnterior == 0){
-			  previous.setDisable(true);
-			}else{
-			  previous.setDisable(false);
-			}
-			next.setDisable(false);			
+		if(indiceAnterior >= 0){
+		  carregarInformacoes(indiceAnterior);
+		}
+	
+		if(indiceAnterior == 0){
+		  previous.setDisable(true);
+		}else{
+		  previous.setDisable(false);
+		}
+		next.setDisable(false);			
 	}
 	
 	
@@ -149,7 +145,6 @@ public class ControllerAtor {
 				Alert a = new Alert(AlertType.INFORMATION, "Registro removido com sucesso!!", ButtonType.CLOSE);
 				a.show();
 				
-				System.out.println(GAtor.getAtores());
 				if(GAtor.getAtores().size() == 0){
 					id.setText("");
 					descricao.setText("");

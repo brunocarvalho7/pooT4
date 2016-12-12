@@ -26,12 +26,29 @@ public class Produtor {
 	public String toString() {
 		return nome;
 	}
-	
-	public boolean equals(Produtor o){
-		if(o.getIdProdutor() == getIdProdutor()){
-			return true;
-		}
-		return false;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idProdutor;
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produtor other = (Produtor) obj;
+		if (idProdutor != other.idProdutor)
+			return false;
+		return true;
+	}
+	
+	
 	
 }

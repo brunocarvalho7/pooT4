@@ -31,13 +31,29 @@ public class Gravadora {
 	public String toString() {
 		return nome;
 	}
-	
-	public boolean equals(Gravadora o){
-		if (o.getIdGravadora() == getIdGravadora()){
-			return true;
-		}
-		
-		return false;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idGravadora;
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Gravadora other = (Gravadora) obj;
+		if (idGravadora != other.idGravadora)
+			return false;
+		return true;
+	}
+	
+
 	
 }

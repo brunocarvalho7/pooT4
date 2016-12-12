@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import locacao.model.Cliente;
+import locacao.model.Genero;
 
 public class GCliente {
 	
@@ -32,6 +33,16 @@ public class GCliente {
 		}
 		
 		return -1;
+	}
+	
+	public static Cliente getCliente(int idCliente){
+		for(Cliente cliente : clientes){
+			if(cliente.getIdPessoa() == idCliente){
+				return cliente;
+			}
+		}
+		
+		return null;
 	}
 	
 }

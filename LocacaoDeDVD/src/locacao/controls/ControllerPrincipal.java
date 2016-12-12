@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -93,10 +96,28 @@ public class ControllerPrincipal {
 		
 		outraTela.setTitle("Cadastro de atendente");
 		
-		Scene tela = new Scene(formAtendente, 530, 200);
+		Scene tela = new Scene(formAtendente, 530, 600);
 		
 		outraTela.setScene(tela);
 		outraTela.show();
+	}
+	
+	public void telaAluguel() throws Exception{
+		Stage outraTela = new Stage();
+		
+		Parent formAluguel = FXMLLoader.load(getClass().getResource("../view/FormAluguel.fxml"));
+		
+		outraTela.setTitle("Gerenciamento de Aluguéis");
+		
+		Scene tela = new Scene(formAluguel, 600, 600);
+		
+		outraTela.setScene(tela);
+		outraTela.show();
+	}
+	
+	public void sobre(){
+		Alert a = new Alert(AlertType.INFORMATION, "Desenvolvido por:\n\tBruno de Carvalho\n\tIsac Moura", ButtonType.CLOSE);
+		a.show();
 	}
 	
 }

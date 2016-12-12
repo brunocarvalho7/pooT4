@@ -36,11 +36,4 @@ public class Cliente extends Pessoa{
 		this.rsAlugado = rsAlugado;
 	}
 
-	@Override
-	public String toString() {
-		return "Pessoa [idPessoa=" + getIdPessoa() + ", nome=" + getNome() + ", cpf=" + getCpf() + ", endereco=" + getEndereco()
-				+ ", telefone=" + getTelefone() + ", email=" + getEmail() + ", historico=" + historico 
-				+ ", rsAlugado=" + rsAlugado + "]";
-	}
-
 }

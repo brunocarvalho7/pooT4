@@ -19,9 +19,7 @@ public class ControllerAtendente {
 	  Button previous, next, novo, editar, salvar, remover;
 	  
 	  @FXML
-	  public void initialize(){   
-	    System.out.println(GAtendente.getAtendentes());
-	    
+	  public void initialize(){   	    
 	    if(GAtendente.getAtendentes().isEmpty()){ //OK
 	      previous.setDisable(true);
 	      next.setDisable(true);
@@ -82,61 +80,42 @@ public class ControllerAtendente {
 	    remover.setDisable(true);   
 	  }
 	  
-	  public boolean salvarAtendente(){
+    public boolean salvarAtendente(){
 	    //TODO RESTRIÇÕES 
-	    int vID = Integer.parseInt(id.getText());
-	    String vNome  = descricao.getText();
-	    String vCPF   = cpf.getText();
-	    String vEnd   = endereco.getText();
-	    String vTel   = telefone.getText();
-	    String vEmail = email.getText();
-	    String vSalario = salario.getText();
+	    if(isValid()){
+	    	int vID = Integer.parseInt(id.getText());
 	    
-	    if(vNome.trim().isEmpty()){
-	      Alert vazio = new Alert(AlertType.WARNING, "Preencha o nome do atendente", ButtonType.OK);
-	      vazio.show();
-	      descricao.setText("");
-	      descricao.requestFocus();
-	    }else if(vCPF.trim().isEmpty()){
-	          Alert vazio = new Alert(AlertType.WARNING, "Preencha o CPF do atendente", ButtonType.OK);
-	          vazio.show();
-	          cpf.setText("");
-	          cpf.requestFocus();
-	     }else if(vEnd.trim().isEmpty()){
-	        Alert vazio = new Alert(AlertType.WARNING, "Preencha o Endereço do atendente", ButtonType.OK);
-	        vazio.show();
-	        endereco.setText("");
-	        endereco.requestFocus();
-	     }else if(vSalario.trim().isEmpty()){
-	    	 Alert vazio = new Alert(AlertType.WARNING, "Preencha o salário do atendente", ButtonType.OK);
-	    	 vazio.show();
-	    	 salario.setText("");
-	    	 salario.requestFocus();
-	     }
-	    else{
-	      Atendente atendente = new Atendente(vID, vNome, vCPF, vEnd, vTel, vEmail, (float) Double.parseDouble(vSalario));
+		    String vNome  = descricao.getText();
+		    String vCPF   = cpf.getText();
+		    String vEnd   = endereco.getText();
+		    String vTel   = telefone.getText();
+		    String vEmail = email.getText();
+		    String vSalario = salario.getText();
+	    
+		    Atendente atendente = new Atendente(vID, vNome, vCPF, vEnd, vTel, vEmail, Float.parseFloat(vSalario));
 	      
-	      if(GAtendente.getAtendentes().contains(atendente)){
-	        GAtendente.getAtendentes().set(GAtendente.getIndex(vID) , atendente);
-	      }else{
-	        GAtendente.getAtendentes().add(atendente);
-	        GAtendente.setUltimoID(GAtendente.getUltimoID() + 1);
-	      }
-	      nextAtendente();
+		    if(GAtendente.getAtendentes().contains(atendente)){
+		    	GAtendente.getAtendentes().set(GAtendente.getIndex(vID) , atendente);
+		    }else{
+		    	GAtendente.getAtendentes().add(atendente);
+		    	GAtendente.setUltimoID(GAtendente.getUltimoID() + 1);
+		    }
+		    nextAtendente();
 	      
-	      novo.setDisable(false);
-	      editar.setDisable(false);
-	      salvar.setDisable(true);
-	      remover.setDisable(false);
-	      descricao.setEditable(false);
-	      
-	      
-	      Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
-	      a.show();
-	  
-	      return true;
+		      novo.setDisable(false);
+		      editar.setDisable(false);
+		      salvar.setDisable(true);
+		      remover.setDisable(false);
+		      descricao.setEditable(false);
+		      
+		      
+		      Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
+		      a.show();
+		  
+		      return true;
+	    }else{
+	    	return false;
 	    }
-	    return false;
 	  }
 	  
 	  public void previousAtendente(){ //OK
@@ -213,4 +192,66 @@ public class ControllerAtendente {
 	    email.setText(a.getEmail());
 	    salario.setText(String.valueOf(a.getSalario()));
 	  }
+
+	  public boolean isValid(){
+		  if((descricao.getText() == null) || (descricao.getText().isEmpty())){
+		      Alert vazio = new Alert(AlertType.WARNING, "Preencha o nome do atendente", ButtonType.OK);
+		      vazio.show();
+		      descricao.setText("");
+		      descricao.requestFocus();
+		      return false;
+		    }
+		  if((cpf.getText() == null) || (cpf.getText().isEmpty())){
+	          Alert vazio = new Alert(AlertType.WARNING, "Preencha o CPF do atendente", ButtonType.OK);
+	          vazio.show();
+	          cpf.setText("");
+	          cpf.requestFocus();
+	          return false;
+		  }
+			    
+		  if((cpf.getText().matches("\\d+") == false) || (cpf.getText() == "") || (cpf.getText().length()<11)){
+			  Alert vazio = new Alert(AlertType.WARNING, "Preencha um CPF válido!", ButtonType.OK);
+	    	  vazio.show();
+	    	  cpf.setText("");
+	    	  cpf.requestFocus();
+			  return false;
+			}
+		  
+		  if(endereco.getText() == null){
+	        Alert vazio = new Alert(AlertType.WARNING, "Preencha o Endereço do atendente", ButtonType.OK);
+	        vazio.show();
+	        endereco.setText("");
+	        endereco.requestFocus();
+	        return false;
+		   }
+		  
+		  if((telefone.getText().matches("\\d+") == false) || (telefone.getText() == "")){
+			  Alert vazio = new Alert(AlertType.WARNING, "Preencha um telefone válido!!", ButtonType.OK);
+		      vazio.show();
+		      telefone.setText("");
+		      telefone.requestFocus();
+			  return false;
+			}
+			
+		  
+		  if((salario.getText() == null) || (salario.getText().isEmpty())){
+	    	 Alert vazio = new Alert(AlertType.WARNING, "Preencha o salário do atendente", ButtonType.OK);
+	    	 vazio.show();
+	    	 salario.setText("");
+	    	 salario.requestFocus();
+	    	 return false;
+	     }
+		  
+		  try{
+				Double.parseDouble(salario.getText());
+			}catch(NumberFormatException e){
+				Alert a = new Alert(AlertType.WARNING, "Ops. Informe um salário válido!!", ButtonType.CLOSE);
+				a.show();
+				salario.requestFocus();
+				return false;
+			}
+		  
+		  return true;
+	  }
+
 }

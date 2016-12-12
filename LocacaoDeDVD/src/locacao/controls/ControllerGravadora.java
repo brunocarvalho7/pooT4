@@ -19,9 +19,7 @@ public class ControllerGravadora {
 
 	@FXML
 	public void initialize(){
-		System.out.println(GGravadora.getGravadoras());
-
-		if(GGravadora.getGravadoras().isEmpty()){ //OK
+		if(GGravadora.getGravadoras().isEmpty()){ 
 			previous.setDisable(true);
 			next.setDisable(true);
 			editar.setDisable(true);
@@ -105,18 +103,16 @@ public class ControllerGravadora {
 
 	public void previousGravadora(){ //OK
 		int indiceAnterior = (GGravadora.getIndex(Integer.parseInt(id.getText())) - 1);
-		System.out.println(GGravadora.getGravadoras());
-			System.out.println("Indice Anterior: "+indiceAnterior );
-			if(indiceAnterior >= 0){
-			  carregarInformacoes(indiceAnterior);
-			}
+		if(indiceAnterior >= 0){
+		  carregarInformacoes(indiceAnterior);
+		}
 
-			if(indiceAnterior == 0){
-			  previous.setDisable(true);
-			}else{
-			  previous.setDisable(false);
-			}
-			next.setDisable(false);
+		if(indiceAnterior == 0){
+		  previous.setDisable(true);
+		}else{
+		  previous.setDisable(false);
+		}
+		next.setDisable(false);
 	}
 
 
@@ -146,8 +142,7 @@ public class ControllerGravadora {
 
 				Alert a = new Alert(AlertType.INFORMATION, "Registro removido com sucesso!!", ButtonType.CLOSE);
 				a.show();
-
-				System.out.println(GGravadora.getGravadoras());
+				
 				if(GGravadora.getGravadoras().size() == 0){
 					id.setText("");
 					descricao.setText("");

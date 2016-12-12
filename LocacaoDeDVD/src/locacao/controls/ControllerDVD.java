@@ -124,22 +124,22 @@ public class ControllerDVD {
 			int vQuant 	   = Integer.parseInt(quant.getText());
 			Double vRs 	   = Double.parseDouble(rs.getText());
 			
-				DVD dvd = new DVD(vID, vGenero, vTitulo, tempAtores, tempProdutores, vGravadora, vQuant, vRs);
-				
-				if(GDVD.getDvds().contains(dvd)){
-					GDVD.getDvds().set(GDVD.getIndex(vID) , dvd);
-				}else{
-					GDVD.getDvds().add(dvd);
-					GDVD.setUltimoID(GDVD.getUltimoID() + 1);
-				}
-				nextRegistro();
-				
-				desabilitaEdicao();
-				
-				Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
-				a.show();
-		
-				return true;
+			DVD dvd = new DVD(vID, vGenero, vTitulo, tempAtores, tempProdutores, vGravadora, vQuant, vRs);
+			
+			if(GDVD.getDvds().contains(dvd)){
+				GDVD.getDvds().set(GDVD.getIndex(vID) , dvd);
+			}else{
+				GDVD.getDvds().add(dvd);
+				GDVD.setUltimoID(GDVD.getUltimoID() + 1);
+			}
+			nextRegistro();
+			
+			desabilitaEdicao();
+			
+			Alert a = new Alert(AlertType.INFORMATION, "Dados salvos com sucesso!!", ButtonType.CLOSE);
+			a.show();
+	
+			return true;
 		}else{
 			return false;
 		}
@@ -180,9 +180,11 @@ public class ControllerDVD {
 	}
 	
 	public void adicionarAtor(){
-		tempAtores.add(atores.getValue());
+		if(!tempAtores.contains(atores.getValue())){
+			tempAtores.add(atores.getValue());
 		
-		lvAtores.setItems(tempAtores);
+			lvAtores.setItems(tempAtores);
+		}
 	}
 	
 	public void removerAtor(){
@@ -358,15 +360,7 @@ public class ControllerDVD {
 			rs.requestFocus();
 			return false;
 		}
-		
-
-		
-
-	
-		
 
 		return true;
-	}
-	
-	
+	}	
 }

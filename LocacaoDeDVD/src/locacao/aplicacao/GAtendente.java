@@ -15,7 +15,7 @@ static int ultimoID = 0;
 	}
 
 	public static void setUltimoID(int ultimoID) {
-		GAtor.ultimoID = ultimoID;
+		GAtendente.ultimoID = ultimoID;
 	}
 
 	public static List<Atendente> getAtendentes() {
@@ -30,5 +30,15 @@ static int ultimoID = 0;
 		}
 		
 		return -1;
+	}
+	
+	public static Atendente getAtendente(int idAtendente){
+		for(Atendente atendente : atendentes){
+			if(atendente.getIdPessoa() == idAtendente){
+				return atendente;
+			}
+		}
+		
+		return null;
 	}
 }
