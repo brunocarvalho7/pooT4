@@ -1,11 +1,16 @@
 package locacao.controls;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ControllerPrincipal {
+	@FXML
+	StackPane stack;
+	
 	public void telaCliente() throws Exception{
 		Stage outraTela = new Stage();
 		
@@ -63,6 +68,19 @@ public class ControllerPrincipal {
 		outraTela.setTitle("Cadastro de gravadora");
 		
 		Scene tela = new Scene(formGravadora, 530, 200);
+		
+		outraTela.setScene(tela);
+		outraTela.show();
+	}
+	
+	public void telaAtendente() throws Exception{
+		Stage outraTela = new Stage();
+		
+		Parent formAtendente = FXMLLoader.load(getClass().getResource("../view/FormAtendente.fxml"));
+		
+		outraTela.setTitle("Cadastro de atendente");
+		
+		Scene tela = new Scene(formAtendente, 530, 200);
 		
 		outraTela.setScene(tela);
 		outraTela.show();

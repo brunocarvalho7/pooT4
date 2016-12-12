@@ -16,7 +16,7 @@
                 <Menu mnemonicParsing="false" text="Cadastros">
                   <items>
                         <MenuItem mnemonicParsing="false" onAction="#telaAtor" text="Ator" />
-                        <MenuItem mnemonicParsing="false" text="Atendentes" />
+                        <MenuItem mnemonicParsing="false" onAction="#telaAtendente" text="Atendentes" />
                     <MenuItem id="itemCliente" mnemonicParsing="false" onAction="#telaCliente" text="Cliente" />
                         <MenuItem mnemonicParsing="false" text="DVD" />
                         <MenuItem mnemonicParsing="false" onAction="#telaGenero" text="Genero" />

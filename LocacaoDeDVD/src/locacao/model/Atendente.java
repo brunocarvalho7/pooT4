@@ -7,7 +7,7 @@ public class Atendente extends Pessoa{
 		return salario;
 	}
 
-	public Atendente(int idPessoa, String nome, String cpf, String endereco, String telefone, String email) {
+	public Atendente(int idPessoa, String nome, String cpf, String endereco, String telefone, String email, float salario) {
 		super(idPessoa, nome, cpf, endereco, telefone, email);
 	}
 	
