@@ -2,6 +2,7 @@ package locacao.aplicacao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import locacao.model.Gravadora;
 
 public class GGravadora {
@@ -31,4 +32,15 @@ public class GGravadora {
 		
 		return -1;
 	}
+	
+	public static Gravadora getGravadora(int idGravadora){
+		for(Gravadora gravadora : gravadoras){
+			if(gravadora.getIdGravadora() == idGravadora){
+				return gravadora;
+			}
+		}
+		
+		return null;
+	}
+	
 }

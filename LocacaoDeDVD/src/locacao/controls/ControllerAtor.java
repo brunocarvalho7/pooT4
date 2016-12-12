@@ -105,7 +105,7 @@ public class ControllerAtor {
 		return false;
 	}
 	
-	public void previousAtor(){ //OK
+	public void previousAtor(){ 
 		int indiceAnterior = (GAtor.getIndex(Integer.parseInt(id.getText())) - 1);  
 		System.out.println(GAtor.getAtores());
 			System.out.println("Indice Anterior: "+indiceAnterior );

@@ -18,20 +18,12 @@ public class Ator {
 		this.idAtor = idAtor;
 	}
 	public String getNome() {
-		return nome+"teste";
+		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + idAtor;
-		return result;
-	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,7 +38,7 @@ public class Ator {
 		return true;
 	}
 	public String toString() {
-		return "Ator [idAtor=" + idAtor + ", nome=" + nome + "]";
+		return nome;
 	}
 	
 }

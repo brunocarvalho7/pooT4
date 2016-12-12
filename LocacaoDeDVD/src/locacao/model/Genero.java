@@ -29,7 +29,7 @@ public class Genero {
 
 	@Override
 	public String toString() {
-		return "Genero [idGenero=" + idGenero + ", nome=" + nome + "]";
+		return nome;
 	}
 	
 	public boolean equals(Genero o){

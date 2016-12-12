@@ -32,4 +32,14 @@ public class GGenero {
 		return -1;
 	}
 	
+	public static Genero getGenero(int idGenero){
+		for(Genero genero : generos){
+			if(genero.getIdGenero() == idGenero){
+				return genero;
+			}
+		}
+		
+		return null;
+	}
+	
 }

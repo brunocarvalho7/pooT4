@@ -68,4 +68,17 @@ public class ControllerPrincipal {
 		outraTela.show();
 	}
 	
+	public void telaDVD() throws Exception{
+		Stage outraTela = new Stage();
+		
+		Parent formGravadora = FXMLLoader.load(getClass().getResource("../view/FormDVD.fxml"));
+		
+		outraTela.setTitle("Cadastro de DVD'S");
+		
+		Scene tela = new Scene(formGravadora, 600, 600);
+		
+		outraTela.setScene(tela);
+		outraTela.show();
+	}
+	
 }

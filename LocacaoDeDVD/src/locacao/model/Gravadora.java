@@ -29,7 +29,7 @@ public class Gravadora {
 
 	@Override
 	public String toString() {
-		return "Gravadora [idGravadora=" + idGravadora + ", nome=" + nome + "]";
+		return nome;
 	}
 	
 	public boolean equals(Gravadora o){

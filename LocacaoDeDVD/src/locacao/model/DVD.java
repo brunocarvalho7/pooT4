@@ -3,18 +3,21 @@ package locacao.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class DVD {
 	private int idDvd;
 	private int genero;
 	private String titulo;
-	private List<Ator> atores = new ArrayList<>();
+	private ObservableList<Ator> atores = FXCollections.observableArrayList();
 	private List<Produtor> produtores = new ArrayList<>();
 	private int gravadora;
 	private int quantEstoque;
-	private float rsAluguel;
+	private Double rsAluguel;
 	
-	public DVD(int idDvd, int genero, String titulo, List<Ator> atores, List<Produtor> produtores, int gravadora,
-			int quantEstoque, float rsAluguel) {
+	public DVD(int idDvd, int genero, String titulo, ObservableList<Ator> atores, List<Produtor> produtores, int gravadora,
+			int quantEstoque, Double rsAluguel) {
 		super();
 		this.idDvd = idDvd;
 		this.genero = genero;
@@ -50,11 +53,11 @@ public class DVD {
 		this.titulo = titulo;
 	}
 
-	public List<Ator> getAtores() {
+	public ObservableList<Ator> getAtores() {
 		return atores;
 	}
 
-	public void setAtores(List<Ator> atores) {
+	public void setAtores(ObservableList<Ator> atores) {
 		this.atores = atores;
 	}
 
@@ -82,11 +85,11 @@ public class DVD {
 		this.quantEstoque = quantEstoque;
 	}
 
-	public float getRsAluguel() {
+	public Double getRsAluguel() {
 		return rsAluguel;
 	}
 
-	public void setRsAluguel(float rsAluguel) {
+	public void setRsAluguel(Double rsAluguel) {
 		this.rsAluguel = rsAluguel;
 	}
 

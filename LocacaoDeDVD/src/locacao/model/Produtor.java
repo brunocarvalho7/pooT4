@@ -24,7 +24,7 @@ public class Produtor {
 	}
 
 	public String toString() {
-		return "Produtor [idProdutor=" + idProdutor + ", nome=" + nome + "]";
+		return nome;
 	}
 	
 	public boolean equals(Produtor o){
